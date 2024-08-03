@@ -1,0 +1,20 @@
+id: car
+start: isCarRunning
+nodes:
+  - id: isCarRunning
+    transitions:
+      - result: RUNNING
+        next: isCarOverMaximumSpeed
+      - result: STOPPED
+        next: end
+  - id: isCarOverMaximumSpeed
+    transitions:
+      - result: YES
+        next: brake
+      - result: NO
+        next: end
+  - id: brake
+    transitions:
+      - result: DONE
+        next: isCarRunning
+  - id: end
